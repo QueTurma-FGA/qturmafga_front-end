@@ -1,0 +1,24 @@
+/* :root {
+  --background-color: #5A6496;
+} */
+
+:focus {
+  outline: transparent;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #5A6496;
+  -webkit-font-smoothing: antialiased;
+}
+
+body, input, textArea, button {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+}
