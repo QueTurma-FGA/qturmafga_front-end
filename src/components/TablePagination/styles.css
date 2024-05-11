@@ -1,0 +1,26 @@
+.not-found-message {
+  display: flex;
+  justify-content: center;
+  margin: 15px 0;
+}
+
+.not-found-message > span {
+  font-size: 15px;
+  color: #a3a4a6;
+}
+
+.table-container {
+  overflow-x: auto;
+  padding: 0 0 10px 0;
+}
+
+.pagination-container {
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+  margin: 7px 0 10px 0;
+}
+
+.pagination-text {
+  margin: 0 10px;
+}
