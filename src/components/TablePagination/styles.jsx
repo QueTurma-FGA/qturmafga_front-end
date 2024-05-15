@@ -13,10 +13,21 @@ export const DivTable = styled.div`
   background-color: #fff;
   font-family: arial, sans-serif;
   padding-bottom: 2px;
+
+  /* tr td{
+    border: 1px solid var(--azul-escuro);
+    border-collapse: collapse;
+    padding: 11px 0px;
+    color: var(--azul-escuro);
+    font-weight: bold;
+} */
 `;
 
 export const Table = styled.table`
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border-spacing:0;
   border-collapse: collapse;
 
@@ -45,16 +56,25 @@ export const Table = styled.table`
     padding: 8px;
   }
 
-  tr:nth-child(2n+1) {
+  /* tr:nth-child(2n+1) {
     background-color: #F8F9FA;
-  }
+  } */
 
   tr {
     ${(props) => props.rowClick && css`
       &:hover {
         cursor: pointer;
-        background: #e3e3e3;
+        background: var(--azul-escuro);
+        color: #fff;
+        opacity: 0.8;
       }
     `}
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: var(--azul-escuro);
+    font-weight: bold;
+    border: 1px solid var(--azul-escuro);
   }
+  
 `;

@@ -23,9 +23,9 @@ const Selector = (props) => {
 
   return (
     <Container width={width}>
-      <div style={{margin: loading ? '1px 0' : '4px 0', display: 'flex'}}>
+      <div>
         <span>{label}</span>
-        <LoadingIcon loading={loading} padding='3px 0 0 5px' />
+        <LoadingIcon loading={loading} />
       </div>
 
       <Select {...props}

@@ -1,60 +1,69 @@
+import { useState } from 'react'
 import logoQturmaFGA from '../../assets/logoQTurmaFGA.png'
-import bannerAprender from '../../assets/bannerAprender.png'
 import styles from './home.module.css'
 import TablePagination from '../../components/TablePagination'
 
 import data from '../../components/TablePagination/data'
 
+const tableFields = [
+  {key: 'codigo', label: 'codigo'},
+]
+
 const Home = () => {
+  const [materias, setMaterias] = useState(data); 
   const handleRowClick = (row) => {
     console.log(row)
   }
   
-  const handlePageChange = (pageSize) => {
-    console.log(pageSize)
-  }
-
   const tableDataSettings = (field, data, record) => {
-    return data
+    return `${record.codigo} - ${record.nome}`
   }
 
-  return (
-    <div className={styles.homeContainer}>
-        <img src={logoQturmaFGA} alt="Logo UnB Qturma?FGA" width='600px'/>
-        <img src={bannerAprender} alt="Banner Aprender UnB" width="1780px"/>
+  const handleChangeMateria = (e) => {
+    let str = e.target.value.toUpperCase().replaceAll(' ', "")
 
-        <input className={styles.input} type="text" />
-      
-        <div styles={{width: '100%'}}>
-          <TablePagination
-            frontPagination
-            // data={[]}
-            data={data}
-            dataSettings={tableDataSettings}
-            // fields={tableFields}
-            // fields={data}
-            rowsPerPageOptions={['5', '10', '25', '50', '100']}
-            // rowsPerPageDefault={10}
-            onRowClick={handleRowClick}
-            onPageChange={handlePageChange} // use in back pagination
-            // totalItens={0} // use in back pagination
-            // actions
-            // grid boxShadow borderRadius
-            // // actions={{
-            // //   view: {},
-            // //   edit: {},
-            // //   delete: {}
-            // // }}
-        />
-        </div>      
-      <footer>
-        <p>&copy; Feudo Preto - Terras Devastadas</p>
-      </footer>
-    </div>
-  );
-
+    let filterMaterias = data.filter(data => data.codigo.includes(str) || data.nome.includes(str))
+    setMaterias(filterMaterias)
+  }
   
+  return ( 
+    <body>
+      <header>
+        <div className={styles['logo-empresa']}>
+          <img src={logoQturmaFGA} alt="Logo UnB Qturma?FGA"/>
+        </div>
 
+      </header>
+      <main>
+        <div className={styles.principal}>
+          <div className={styles.search}>
+            <input 
+              type="text" 
+              name="input-box" 
+              className={styles.ibox} 
+              placeholder="Pesquise uma matéria por código ou nome"
+              onChange={handleChangeMateria}
+            />
+          </div>
+        </div>
+
+        <TablePagination
+          frontPagination
+          fields={tableFields}
+          data={materias}
+          dataSettings={tableDataSettings}
+          rowsPerPageOptions={['5', '10', '25', '50', '100']}
+          onRowClick={handleRowClick}
+
+        />
+        
+      </main>
+        
+      <footer>
+          <p> Todos os direitos reservados <a href="#">&copy; 2024 QTURMA</a>  </p>
+      </footer>    
+    </body>
+    );
 }
 
 export default Home

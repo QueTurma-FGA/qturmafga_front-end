@@ -1,12 +1,13 @@
-/* :root {
-  --background-color: #5A6496;
-} */
-
+:root{
+    --azul-escuro: #0A4273;
+}
+/* 
 :focus {
   outline: transparent;
-}
+} */
 
 * {
+  border: 0;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -17,8 +18,8 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-body, input, textArea, button {
+/* body, input, textArea, button {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-size: 1rem;
-}
+} */

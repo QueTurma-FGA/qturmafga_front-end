@@ -1,36 +1,155 @@
-.homeContainer {
+.logo-empresa {
+  padding: 15px;
+}
+
+.logo-empresa img {
+  width: 300px;
+}
+
+header a {
+  text-decoration: none;
+  color: var(--azul-escuro);
+  font-weight: 500;
+}
+
+header a:hover{
+  font-weight: bold;
+}
+
+header{
+  display: flex;
+  height: 120px;
+  justify-content: space-between;
+  padding: 30px;
+  background-color: whitesmoke ;
+  padding-left: 50px;
+}
+
+header ul li{
+  list-style: none;
+  text-decoration:none;
+  display: inline-block;
+  width: 150px;
+  text-align: center;
+  height: 30px;
+  padding: 5px;
+  border-radius: 8px;
+}
+
+menu {
+  padding: 5px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+}
+
+.principal {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  height: 300px;
+  /* padding: 80px; */
+  font-family: 'Cambria';
+  background-image: url('../../assets/bannerAprender.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+  opacity: 0.8;
+  /* margin-bottom: 20px; */
+
+}
+
+.texto-central{
+  font-size:1.8em;
+  margin: 15px;
+  visibility: hidden;
+
+}
+
+.ibox{
+  width: 450px;
+  border-radius: 10px;
+  border: 1px solid var(--azul-escuro);
+  height: 50px;
+  vertical-align: bottom;
+}
+
+.search {
+  height: 50px;
+  /* margin-top: 50px; */
+}
+
+.item{
+  display: inline-block;
+}
+
+input{
+  padding: 10px;
+  font-family: 'Cambria';
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.search-box {
+  border-radius: 10px;
+  background-color: white;
+  height: 50px;
+  width: 50px;
+  color: var(--azul-escuro);
+} 
+
+.search-box:hover{
+  cursor: pointer;
+} 
+
+.search-box:active{
+  background-color: white;
+  transition: .1s;
+  color: var(--azul-escuro);
+}
+
+.resultados{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
   align-items: center;
-  padding-top: 15px;
-  gap: 15px;
 }
 
-.homeContainer span {
-  /* color: greenyellow; */
-  font: 18px Arial;
+.resultados table{
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.resultados tr td{
+  border: 1px solid var(--azul-escuro);
+  border-collapse: collapse;
+  padding: 11px 0px;
+  color: var(--azul-escuro);
   font-weight: bold;
 }
 
-.homeContainer footer {
-  font: 12px Arial;
-  font-style: italic;
-  font-weight: bold;
-  color: black;
-}
-
-.input {
-  position: absolute;
-  top: 250px;
-
+footer {
+  position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px;
   height: 30px;
-  width: 350px;
-  padding-left: 5px;
-  border: 0;
-
-  border-radius: 4px;
+  padding-left: 30px;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  font-size: small;
+  background-color: var(--azul-escuro);
+  color: white;
 }
 
-.input:focus {
-  border: 2px solid #ccc;
+footer a{
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+
 }
+
