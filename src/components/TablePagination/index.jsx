@@ -13,7 +13,7 @@ const convertCamelCaseToLabel = (str) => {
 }
 
 const TablePagination = (props) => {
-  const {data, fields, rowsPerPageOptions, rowsPerPageDefault, dataSettings, totalItens, frontPagination, actions} = props
+  const {searchInput, data, fields, rowsPerPageOptions, rowsPerPageDefault, dataSettings, totalItens, frontPagination, actions} = props
   
   const totalItems = totalItens ? totalItens : data.length
   const rowsPerPageInitial = rowsPerPageDefault ? rowsPerPageDefault : rowsPerPageOptions[0]
@@ -90,8 +90,8 @@ const TablePagination = (props) => {
             ))}
         </Table>
       </div>
-
-      <div className='pagination-container'>
+      <span>. . .</span>
+      {/* <div className='pagination-container'>
         <Pagination count={pages} variant="outlined" shape="rounded" page={page} onChange={handleChangePage}  />
         <span className='pagination-text'> Itens por página: </span>
         <Selector
@@ -100,7 +100,7 @@ const TablePagination = (props) => {
           defaultValue={{value: rowsPerPageInitial, label: rowsPerPageInitial}}
         />
         <span className='pagination-text'> {from} - {to} of {totalItems}</span>
-      </div>
+      </div> */}
     </DivTable>
   );
 }

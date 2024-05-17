@@ -1,29 +1,20 @@
 import styled, { css }from 'styled-components';
 
-// interface TableProps {
-//   borderRadius?: boolean;
-//   grid?: boolean;
-//   rowClick?: boolean;
-//   cellspacing?: string;
-//   actions?: boolean;
-// }
-
 export const DivTable = styled.div`
   font-weight: normal;
   background-color: #fff;
   font-family: arial, sans-serif;
   padding-bottom: 2px;
-
-  /* tr td{
-    border: 1px solid var(--azul-escuro);
-    border-collapse: collapse;
-    padding: 11px 0px;
-    color: var(--azul-escuro);
+  text-align: center;
+  span {
     font-weight: bold;
-} */
+    /* margin: 0; */
+  }
+
 `;
 
 export const Table = styled.table`
+  margin-top: 5px;
   width: 100%;
   display: flex;
   flex-direction: column;

@@ -18,9 +18,9 @@ const Home = () => {
   const tableDataSettings = (field, data, record) => {
     return `${record.codigo} - ${record.nome}`
   }
-
+  
   const handleChangeMateria = (e) => {
-    let str = e.target.value.toUpperCase().replaceAll(' ', "")
+    let str = e.target.value.toUpperCase()
 
     let filterMaterias = data.filter(data => data.codigo.includes(str) || data.nome.includes(str))
     setMaterias(filterMaterias)
@@ -52,9 +52,8 @@ const Home = () => {
           fields={tableFields}
           data={materias}
           dataSettings={tableDataSettings}
-          rowsPerPageOptions={['5', '10', '25', '50', '100']}
+          rowsPerPageOptions={['6', '10', '25', '50', '100']}
           onRowClick={handleRowClick}
-
         />
         
       </main>
