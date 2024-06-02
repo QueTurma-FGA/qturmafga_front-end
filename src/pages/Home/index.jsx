@@ -1,17 +1,28 @@
-import { useState } from 'react'
+import { useState, useEffect, useLayoutEffect } from 'react'
 import logoQturmaFGA from '../../assets/logoQTurmaFGA.png'
 import styles from './home.module.css'
 import TablePagination from '../../components/TablePagination'
-
-import data from '../../components/TablePagination/data'
+import { getAllDisciplines } from '../../services/disciplines'
 
 const tableFields = [
   {key: 'codigo', label: 'codigo'},
 ]
 
 const Home = () => {
-  const [materias, setMaterias] = useState(data); 
-  const handleRowClick = (row) => {
+  const [materias, setMaterias] = useState([]); 
+  const [filterMaterias, setFilterMaterias] = useState([]); 
+  
+  const listAllDisciplines = async () => {
+    const dados = await getAllDisciplines()
+    setMaterias(dados.data)
+    setFilterMaterias(dados.data)
+  }
+
+  useLayoutEffect(() => {
+    listAllDisciplines()
+  }, [])
+
+  const handleRowClick = (row) => {  
     console.log(row)
   }
   
@@ -22,8 +33,8 @@ const Home = () => {
   const handleChangeMateria = (e) => {
     let str = e.target.value.toUpperCase()
 
-    let filterMaterias = data.filter(data => data.codigo.includes(str) || data.nome.includes(str))
-    setMaterias(filterMaterias)
+    let filterMaterias = materias.filter(data => data.codigo.includes(str) || data.nome.includes(str))
+    setFilterMaterias(filterMaterias)
   }
   
   return ( 
@@ -50,7 +61,7 @@ const Home = () => {
         <TablePagination
           frontPagination
           fields={tableFields}
-          data={materias}
+          data={filterMaterias}
           dataSettings={tableDataSettings}
           rowsPerPageOptions={['6', '10', '25', '50', '100']}
           onRowClick={handleRowClick}
