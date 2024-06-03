@@ -3,12 +3,15 @@ import logoQturmaFGA from '../../assets/logoQTurmaFGA.png'
 import styles from './home.module.css'
 import TablePagination from '../../components/TablePagination'
 import { getAllDisciplines } from '../../services/disciplines'
+import { useNavigate } from "react-router-dom";
 
 const tableFields = [
   {key: 'codigo', label: 'codigo'},
 ]
 
 const Home = () => {
+  const navigate = useNavigate()
+
   const [materias, setMaterias] = useState([]); 
   const [filterMaterias, setFilterMaterias] = useState([]); 
   
@@ -23,7 +26,7 @@ const Home = () => {
   }, [])
 
   const handleRowClick = (row) => {  
-    console.log(row)
+    navigate(`/professors?discipline=${row.codigo}`);
   }
   
   const tableDataSettings = (field, data, record) => {
@@ -73,7 +76,7 @@ const Home = () => {
           <p> Todos os direitos reservados <a href="#">&copy; 2024 QTURMA</a>  </p>
       </footer>    
     </body>
-    );
+  );
 }
 
 export default Home
