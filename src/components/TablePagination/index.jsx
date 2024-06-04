@@ -1,11 +1,6 @@
 import React, { useCallback, useEffect, useLayoutEffect, useState } from 'react';
 import { DivTable, Table } from './styles';
 import './styles.css'
-import Pagination from '@mui/material/Pagination';
-import Selector from '../Selector';
-import { IconButton } from '@mui/material';
-import { FaEye } from 'react-icons/fa';
-import { MdEdit, MdDelete } from 'react-icons/md';
 
 const convertCamelCaseToLabel = (str) => {
   const result = str.replace(/([A-Z])/g, " $1");
@@ -25,21 +20,6 @@ const TablePagination = (props) => {
 
   const [from, setFrom] = useState(1);
   const [to, setTo] = useState(5);
-
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-    if(props.onPageChange) {
-      props.onPageChange({page: newPage, size: rowsPerPage})
-    }
-  }
-
-  const handleChangeRowsPerPage = (selected) => {
-    setRowsPerPage(selected.value)
-    setPage(1);
-    if(props.onPageChange) {
-      props.onPageChange({page: 1, size: selected.value})
-    }
-  }
 
   const updateValues = useCallback(() => {
     setPages(Math.ceil(totalItems/rowsPerPage))
@@ -78,7 +58,6 @@ const TablePagination = (props) => {
       <div className='table-container'>
         <Table grid={props.grid} borderRadius={props.borderRadius} rowClick={props.onRowClick} actions={actions ? true : false} cellspacing="0">
             { dataTable.map((row, indx) => (
-              // <tbody>
                 <tr key={indx} onClick={() => props.onRowClick ?  props.onRowClick(row) : ''}>
                   {keys && keys.map((col, idx) =>
                   <td key={idx}>
@@ -86,21 +65,10 @@ const TablePagination = (props) => {
                   </td>
                   )}
                 </tr>
-              // </tbody>
             ))}
         </Table>
       </div>
       <span>. . .</span>
-      {/* <div className='pagination-container'>
-        <Pagination count={pages} variant="outlined" shape="rounded" page={page} onChange={handleChangePage}  />
-        <span className='pagination-text'> Itens por página: </span>
-        <Selector
-          options={rowsPerPageOptions}
-          onChange={handleChangeRowsPerPage}
-          defaultValue={{value: rowsPerPageInitial, label: rowsPerPageInitial}}
-        />
-        <span className='pagination-text'> {from} - {to} of {totalItems}</span>
-      </div> */}
     </DivTable>
   );
 }
