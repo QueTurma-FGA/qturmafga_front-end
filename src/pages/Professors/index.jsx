@@ -1,6 +1,8 @@
 import { useSearchParams } from 'react-router-dom';
 import logoQturmaFGA from '../../assets/logoQTurmaFGA.png'
 import styles from './professors.module.css'
+import Header from '../../components/Header'
+import Footer from '../../components/Footer'
 
 const Professors = () => {
   
@@ -9,12 +11,7 @@ const Professors = () => {
 
   return (
     <body>
-      <header>
-        <div className={styles['logo-empresa']}>
-          <img src={logoQturmaFGA} alt="Logo UnB Qturma?FGA"/>
-        </div>
-
-      </header>
+      <Header />
       {/* <h1>{discipline}</h1> */}
       <main>
         <div id="principal">
@@ -23,6 +20,7 @@ const Professors = () => {
             </div>
         </div>
       </main>
+      <Footer />
     </body>
   );
 }

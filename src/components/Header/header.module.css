@@ -1,0 +1,15 @@
+.logoEmpresa{
+    padding: 8px;
+  }
+  
+.logoEmpresa img{
+    width: 300px;
+  }
+  header{
+    display: flex;
+    height: 90px;
+    justify-content: space-between;
+    padding: 30px;
+    background-color: whitesmoke ;
+    padding-left: 50px;
+  }

@@ -4,6 +4,8 @@ import styles from './home.module.css'
 import TablePagination from '../../components/TablePagination'
 import { getAllDisciplines } from '../../services/disciplines'
 import { useNavigate } from "react-router-dom";
+import Header from '../../components/Header'
+import Footer from '../../components/Footer'
 
 const tableFields = [
   {key: 'codigo', label: 'codigo'},
@@ -42,12 +44,7 @@ const Home = () => {
   
   return ( 
     <body>
-      <header>
-        <div className={styles['logo-empresa']}>
-          <img src={logoQturmaFGA} alt="Logo UnB Qturma?FGA"/>
-        </div>
-
-      </header>
+      <Header/>
       <main>
         <div className={styles.principal}>
           <div className={styles.search}>
@@ -72,9 +69,7 @@ const Home = () => {
         
       </main>
         
-      <footer>
-          <p> Todos os direitos reservados <a href="#">&copy; 2024 QTURMA</a>  </p>
-      </footer>    
+      <Footer />   
     </body>
   );
 }
