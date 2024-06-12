@@ -51,10 +51,10 @@ menu {
   height: 300px;
   /* padding: 80px; */
   font-family: 'Cambria';
-  background-image: url('../../assets/bannerAprender.png');
+  background-image: url('../../assets/banner-home.png');
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: top center;
+  background-position: top left;
   opacity: 0.8;
   /* margin-bottom: 20px; */
 
