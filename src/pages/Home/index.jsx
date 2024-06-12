@@ -1,11 +1,11 @@
 import { useState, useEffect, useLayoutEffect } from 'react'
-import logoQturmaFGA from '../../assets/logoQTurmaFGA.png'
 import styles from './home.module.css'
 import TablePagination from '../../components/TablePagination'
 import { getAllDisciplines } from '../../services/disciplines'
 import { useNavigate } from "react-router-dom";
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
+
 
 const tableFields = [
   {key: 'codigo', label: 'codigo'},
