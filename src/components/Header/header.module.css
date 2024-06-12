@@ -8,8 +8,8 @@
   header{
     display: flex;
     height: 90px;
-    justify-content: space-between;
-    padding: 30px;
+    justify-content: center;
+    padding: 20px;
     background-color: whitesmoke ;
     padding-left: 50px;
   }

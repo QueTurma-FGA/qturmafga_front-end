@@ -1,0 +1,97 @@
+* {
+    border: 0;
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+:root {
+    --azul-escuro: #0A4273;
+}
+
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+}
+
+body {
+    font-family: Calibri;
+    background-color: whitesmoke;
+    height: 100%;
+}
+
+.main {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.avaliacoes {
+    margin-top: 10px;
+    font-size: 0.8em;
+}
+
+
+.resultado {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    margin: auto;
+    width: 1200px;
+    background-color: white;
+    border: 1px solid rgb(168, 168, 168);
+}
+
+.box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.firstColumn h2 {
+    font-size: 1.2em;
+}
+
+.nameProfessor {
+    font-weight: 500;
+}
+
+.thirdColumn {
+    width: 400px;
+}
+
+.thirdColumn h2 {
+    font-size: 1em;
+}
+
+.thirdColumn p {
+    font-size: 0.9em;
+}
+
+.profilepicBox {
+    width: 120px;
+    height: 120px;
+    background-size: cover;
+    background-image: url("../../Imagens/foto2.Sergio.sem_fundo.v2.jpg");
+}
+
+.footerBox {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.footerBox button {
+    padding: 10px 15px;
+    background-color: #0a4273c5;
+    color: white;
+    border: 1px solid #0a4273c5;
+}
+
+.footerBox button:hover {
+    background-color: white;
+    border: 1px solid #0a4273c5;
+    color: var(--azul-escuro);
+    cursor: pointer;
+}
