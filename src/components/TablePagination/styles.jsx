@@ -7,14 +7,14 @@ export const DivTable = styled.div`
   padding-bottom: 2px;
   text-align: center;
   span {
-    font-weight: bold;
+    font-weight: normal;
     /* margin: 0; */
   }
 
 `;
 
 export const Table = styled.table`
-  margin-top: 5px;
+  margin-top: 0px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -55,17 +55,18 @@ export const Table = styled.table`
     ${(props) => props.rowClick && css`
       &:hover {
         cursor: pointer;
-        background: var(--azul-escuro);
-        color: #fff;
+        color: var(--azul-escuro);
         opacity: 0.8;
+        transition: 0.15s;
+        font-weight: 600;
       }
     `}
     width: 100%;
     display: flex;
     justify-content: center;
     color: var(--azul-escuro);
-    font-weight: bold;
-    border: 1px solid var(--azul-escuro);
+    font-weight: 400;
+    border: thin solid var(--azul-escuro);
   }
   
 `;

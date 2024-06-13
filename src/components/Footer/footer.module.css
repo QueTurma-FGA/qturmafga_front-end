@@ -1,6 +1,6 @@
 .footerPagina{
-    position: absolute;
-    top: 100;
+  position: fixed;
+  bottom: 0;
     height: 30px;
     padding-left: 30px;
     width: 100%;

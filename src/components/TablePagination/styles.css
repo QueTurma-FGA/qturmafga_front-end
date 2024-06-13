@@ -2,7 +2,7 @@
   display: flex; 
   justify-content: center; 
   align-items: center;
-  margin: 7px 0 10px 0;
+  margin: 0px 0 10px 0;
 }
 
 .not-found-message {

@@ -1,62 +1,15 @@
-.logo-empresa {
-  padding: 15px;
-}
-
-.logo-empresa img {
-  width: 300px;
-}
-
-header a {
-  text-decoration: none;
-  color: var(--azul-escuro);
-  font-weight: 500;
-}
-
-header a:hover{
-  font-weight: bold;
-}
-
-header{
-  display: flex;
-  height: 120px;
-  justify-content: space-between;
-  padding: 30px;
-  background-color: whitesmoke ;
-  padding-left: 50px;
-}
-
-header ul li{
-  list-style: none;
-  text-decoration:none;
-  display: inline-block;
-  width: 150px;
-  text-align: center;
-  height: 30px;
-  padding: 5px;
-  border-radius: 8px;
-}
-
-menu {
-  padding: 5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
 .principal {
   display: flex;
   flex-direction: column;
   text-align: center;
   justify-content: center;
-  height: 300px;
-  /* padding: 80px; */
+  height: 250px;
   font-family: 'Cambria';
   background-image: url('../../assets/banner-home.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top left;
   opacity: 0.8;
-  /* margin-bottom: 20px; */
 
 }
 
@@ -77,7 +30,6 @@ menu {
 
 .search {
   height: 50px;
-  /* margin-top: 50px; */
 }
 
 .item{
@@ -90,66 +42,3 @@ input{
   font-weight: bold;
   font-size: 1.2em;
 }
-
-.search-box {
-  border-radius: 10px;
-  background-color: white;
-  height: 50px;
-  width: 50px;
-  color: var(--azul-escuro);
-} 
-
-.search-box:hover{
-  cursor: pointer;
-} 
-
-.search-box:active{
-  background-color: white;
-  transition: .1s;
-  color: var(--azul-escuro);
-}
-
-.resultados{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-}
-
-.resultados table{
-  border-collapse: collapse;
-  width: 100%;
-}
-
-.resultados tr td{
-  border: 1px solid var(--azul-escuro);
-  border-collapse: collapse;
-  padding: 11px 0px;
-  color: var(--azul-escuro);
-  font-weight: bold;
-}
-
-footer {
-  position: fixed;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    margin-bottom: 0px;
-  height: 30px;
-  padding-left: 30px;
-  width: 100%;
-  padding-top: 10px;
-  padding-bottom: 20px;
-  font-size: small;
-  background-color: var(--azul-escuro);
-  color: white;
-}
-
-footer a{
-  text-decoration: none;
-  font-weight: bold;
-  color: white;
-
-}
-

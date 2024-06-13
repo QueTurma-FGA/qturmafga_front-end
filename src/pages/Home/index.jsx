@@ -27,9 +27,9 @@ const Home = () => {
     listAllDisciplines()
   }, [])
 
-  const handleRowClick = (row) => {  
-    navigate(`/professors?discipline=${row.codigo}`);
-  }
+  const handleRowClick = (row) => {
+    navigate(`/professors/${row.codigo}`); // Aqui ajustamos para incluir o código da disciplina no caminho
+  };
   
   const tableDataSettings = (field, data, record) => {
     return `${record.codigo} - ${record.nome}`
@@ -57,7 +57,6 @@ const Home = () => {
             />
           </div>
         </div>
-
         <TablePagination
           frontPagination
           fields={tableFields}
@@ -66,6 +65,8 @@ const Home = () => {
           rowsPerPageOptions={['6', '10', '25', '50', '100']}
           onRowClick={handleRowClick}
         />
+
+
         
       </main>
         
