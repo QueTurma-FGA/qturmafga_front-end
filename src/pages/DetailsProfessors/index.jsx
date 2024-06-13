@@ -45,6 +45,12 @@ const DetailsProfessors = () => {
                     </div>
                     <div id="second-column" className={estilos.secondColumn}>
                         <h1 id="name-professor" className={estilos.nameProfessor}> Sérgio Alcântara Machado</h1>
+                        <h2 className={estilos.discplinas_ministradas_titulo}>Disciplinas Ministradas:</h2>
+                        <ul>
+                        <li>Desenvolvimento de Software</li>
+                        <li>Arquitetura de Software</li>
+                        <li>Cálculo I</li>
+                        </ul>
                     </div>
                     <div id="third-column" className={estilos.thirdColumn}>
                         <h2>Biografia:</h2>
@@ -54,8 +60,8 @@ const DetailsProfessors = () => {
                     </div>
                 </div>
                 <div id="footer-box" className={estilos.footerBox}>
-                    <button className={estilos.contatoButton}>Contato</button>
                     <button onClick={openModal} className={estilos.avaliacaoButton}>Fazer Avaliação</button>
+                    <button className={estilos.contatoButton}>Contato</button>
                 </div>
             </div>
             <Modal isOpen={isModalOpen} closeModal={closeModal} />

@@ -48,14 +48,11 @@ const Professors = () => {
                   </div>
                 </div>
                 <div className={styles['bio-box']}>
-                  <h1>BIOGRAFIA</h1>
-                  <p>
-                    Professor Titular da Universidade de Brasília, onde ingressou em 2009. Anteriormente foi professor da Universidade Federal do Espírito Santo, onde ingressou em 1999. É professor e pesquisador da linha de pesquisa em Engenharia de Software do Programa de Pós-Graduação em Computação Aplicada da Universidade de Brasília.
-                  </p>
-                </div>
+                  <h1>CONTATO</h1>
+                  <a href="mailto:professor@unb.br" className={styles['contato']}>professor@unb.br</a>
+                </div> 
               </div>
               <div className={styles['boxrodape']}>
-                <a href="mailto:professor@unb.br" className={styles['contato']}><CiMail />professor@unb.br</a>
                 <a href="#" className={styles['ver-perfil']}>Ver Perfil</a>
               </div>
             </article>
