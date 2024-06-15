@@ -5,7 +5,7 @@ const baseUrl = "http://localhost:3333"
 const getAllDisciplines = () => {
     return axios({
       method: 'get',
-      url: `${baseUrl}/listar-todas-as-materias`,
+      url: `${baseUrl}/list-all-disciplines`,
   })
 };
 
