@@ -4,21 +4,23 @@ import logoQturmaFGA from '../../assets/logoQTurmaFGA.png';
 import styles from './professors.module.css';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import { CiMail } from "react-icons/ci";
-import { getProfessorsByDisciplineCode } from '../../services/professors.jsx';
+import { getProfessorsByDisciplineCode } from '../../services/professors';
 
 const Professors = () => {
-  // const [searchParams] = useSearchParams();
   const { discipline } = useParams();
   const [professors, setProfessors] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchProfessors = async () => {
       try {
         const response = await getProfessorsByDisciplineCode(discipline);
-        setProfessors(response.data.professors);
+        setProfessors(response.data);
       } catch (error) {
-        console.error("Error fetching professors:", error);
+        setError(error.message);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -26,6 +28,9 @@ const Professors = () => {
       fetchProfessors();
     }
   }, [discipline]);
+
+  if (loading) return <p>Carregando...</p>;
+  if (error) return <p>Erro: {error}</p>;
 
   return (
     <div>
@@ -37,16 +42,19 @@ const Professors = () => {
           </div>
           <section id="resultados">
             {professors.map((professor) => (
-              <article key={professor.professor.id} className={styles['boxresultado']}>
+              <article key={professor.email} className={styles['boxresultado']}>
                 <div className={styles['boxcabecalho']}>
-                  <h1>{professor.professor.nome}</h1>
-                  <h2>{professor.professor.unidade}</h2>
+                  <h1>{professor.nome}</h1>
+                  <h2>{professor.unidade}</h2>
                 </div>
                 <div className={styles['boxcorpo']}>
-                  <div className={styles['profilepic-box']}></div>
+                  <div className={styles['profilepic-box']}>
+                    <img src={professor.fto} alt={`${professor.nome}`} width="100" />
+                  </div>
                   <div className={styles['avaliacao-box']}>
                     <h1>AVALIAÇÃO MÉDIA</h1>
                     <div className={styles['stars']}>
+                      {/* Aqui você pode adicionar a lógica para exibir as estrelas */}
                       <span className="fa fa-star checked"></span>
                       <span className="fa fa-star checked"></span>
                       <span className="fa fa-star checked"></span>
@@ -67,7 +75,7 @@ const Professors = () => {
                   </div>
                   <div className={styles['bio-box']}>
                     <h1>CONTATO</h1>
-                    <a href={`mailto:${professor.professor.email}`} className={styles['contato']}>{professor.professor.email}</a>
+                    <a href={`mailto:${professor.email}`} className={styles['contato']}>{professor.email}</a>
                   </div>
                 </div>
                 <div className={styles['boxrodape']}>
