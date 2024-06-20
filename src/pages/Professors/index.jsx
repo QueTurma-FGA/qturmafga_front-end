@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import logoQturmaFGA from '../../assets/logoQTurmaFGA.png';
 import styles from './professors.module.css';
 import Header from '../../components/Header';
@@ -79,7 +79,7 @@ const Professors = () => {
                   </div>
                 </div>
                 <div className={styles['boxrodape']}>
-                  <a href="#" className={styles['ver-perfil']}>Ver Perfil</a>
+                  <Link to={`/details/${professor.email}`} className={styles['ver-perfil']}>Ver Perfil</Link>
                 </div>
               </article>
             ))}

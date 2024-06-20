@@ -14,5 +14,12 @@ const getProfessorsByDisciplineCode = async (codigo) => {
     throw error;
   }
 };
-//aaaaaaaaaaaaaaaaaa
-export { getProfessorsByDisciplineCode };
+
+const getProfessorByEmail = (email) => {
+  return axios({
+      method: 'get',
+      url: `${baseUrl}/get-professor/${email}`,
+  });
+};
+
+export { getProfessorsByDisciplineCode, getProfessorByEmail };
