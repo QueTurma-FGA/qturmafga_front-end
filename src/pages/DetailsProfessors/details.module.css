@@ -55,33 +55,39 @@ body {
 
 .nameProfessor {
     font-weight: 500;
+    margin-bottom: 30px;
 }
 
 .discplinas_ministradas_titulo{
     margin-top: 60px;
     font-size: 1em;
-    text-align: center;
     margin-bottom: 20px;
 
 }
 
-.thirdColumn {
+.secondColumn {
+    margin-left: -90px;
     width: 400px;
 }
 
-.thirdColumn h2 {
+.secondColumn h2 {
     font-size: 1em;
+    margin-bottom: 20px;
 }
 
-.thirdColumn p {
+.secondColumn p {
     font-size: 0.9em;
+}
+
+.readMoreButton{
+    color: #0A4273;
 }
 
 .profilepicBox {
     width: 120px;
     height: 120px;
     background-size: cover;
-    background-image: url("../../assets/foto2.Sergio.sem_fundo.v2.jpg");
+    margin-bottom: 35px;
 }
 
 .footerBox {
@@ -102,4 +108,5 @@ body {
     border: 1px solid #0a4273c5;
     color: var(--azul-escuro);
     cursor: pointer;
+    transition: 200ms;
 }

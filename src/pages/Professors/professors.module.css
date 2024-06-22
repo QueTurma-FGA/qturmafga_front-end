@@ -4,7 +4,7 @@
   text-align: center;
   padding: 10px;
   margin: auto;
-  border-radius: 5px;
+  border-radius: 0px;
   font-weight: bold;
   background-color: var(--azul-escuro);
   color: white;
@@ -38,18 +38,22 @@ body{
   width: 100%;
 }
 
+.caixa-principal{
+  padding-bottom: 20px;
+}
+
 .boxresultado{
   margin-bottom: 100px;
   width: 900px;
   margin: 20px auto;
   border: 1px solid rgba(0, 0, 0, 0.495);
   border-radius: 5px;
-  box-shadow: 0px 0px 7px #00000078;
+  box-shadow: 0px 0px 7px #00000016;
 }
 
 .boxcabecalho{
   padding: 20px 30px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.200);
   height: 70px;
   display: flex;
   justify-content: space-between;
@@ -81,15 +85,18 @@ body{
 
 .avaliacao-box{
   text-align: center;
-  margin-right: 40px;
+  /* margin-right: 40px; */
+  width: 187px;
 }
 
 .stars{
   margin-top: 20px;
+  color: gold;
+  font-size: 1.3em;
 }
 
 .highlights-box{
-  margin-right: 40px;
+  width: 130px;
 }
 
 .highlights-box h1{
@@ -105,16 +112,33 @@ body{
   max-width: 330px;
   display: flex;
   flex-direction: column;
+  text-align: center;
+  height: 180px;
+  padding-top: 50px;
 }
 .bio-box a{
-  font-size: 1.2em;
-  color: black;
-  text-decoration: none;
+  font-size: 1.1em;
+  color: var(--azul-escuro);
+  text-decoration: underline;
+
+}
+
+svg{
+  stroke:currentColor;
+  fill:currentColor;
+  stroke-width:0;
+  height:1.2em;
+  width:2em;
+    }
+
+.contato{
+  display: inline-flex;
+
 }
 
 .boxrodape{
   padding: 20px 30px;
-  border-top: 1px solid black;
+  border-top: 1px solid rgba(0, 0, 0, 0.200);
   display: flexbox;
   justify-content: space-between;
 }
@@ -140,5 +164,5 @@ body{
   color: white;
   border: 1px solid black;
   padding: 5px 35px;
-
+  transition: 450ms;
 }

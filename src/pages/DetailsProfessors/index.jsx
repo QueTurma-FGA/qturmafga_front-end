@@ -10,7 +10,8 @@ import { getProfessorByEmail } from '../../services/professors';
 
 const DetailsProfessors = () => {
   const { email } = useParams();
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
+  const [isBioModalOpen, setIsBioModalOpen] = useState(false);
   const [professor, setProfessor] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -29,11 +30,16 @@ const DetailsProfessors = () => {
     fetchProfessor();
   }, [email]);
 
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const openReviewModal = () => setIsReviewModalOpen(true);
+  const closeReviewModal = () => setIsReviewModalOpen(false);
+
+  const openBioModal = () => setIsBioModalOpen(true);
+  const closeBioModal = () => setIsBioModalOpen(false);
 
   if (loading) return <p>Carregando...</p>;
   if (!professor) return <p>Erro ao carregar professor.</p>;
+
+  const bioTruncated = professor.bio.length > 500 ? `${professor.bio.substring(0, 500)}...` : professor.bio;
 
   return (
     <>
@@ -42,6 +48,7 @@ const DetailsProfessors = () => {
       <main className={estilos.main}>
         <div id="resultado" className={estilos.resultado}>
           <div id="box" className={estilos.box}>
+
             <div id="first-column" className={estilos.firstColumn}>
               <div id="profilepic-box" className={estilos.profilepicBox}>
                 <img src={professor.fto} alt={`${professor.nome}`} width="100" />
@@ -67,8 +74,19 @@ const DetailsProfessors = () => {
                 <StarRating stars={3} />
               </div>
             </div>
+
             <div id="second-column" className={estilos.secondColumn}>
               <h1 id="name-professor" className={estilos.nameProfessor}>{professor.nome}</h1>
+              <h2>Biografia:</h2>
+              <p id="biografia-completa" className={estilos.biografiaCompleta}>
+                {bioTruncated}
+                {professor.bio.length > 500 && (
+                  <a href="#" onClick={openBioModal} className={estilos.readMoreButton}>Leia mais</a>
+                )}
+              </p>
+            </div>
+
+            <div id="third-column" className={estilos.thirdColumn}>
               <h2 className={estilos.discplinas_ministradas_titulo}>Disciplinas Ministradas:</h2>
               <ul>
                 {professor.materias && professor.materias.length > 0 ? (
@@ -80,19 +98,15 @@ const DetailsProfessors = () => {
                 )}
               </ul>
             </div>
-            <div id="third-column" className={estilos.thirdColumn}>
-              <h2>Biografia:</h2>
-              <p id="biografia-completa" className={estilos.biografiaCompleta}>
-                {professor.bio}
-              </p>
-            </div>
           </div>
+          
           <div id="footer-box" className={estilos.footerBox}>
-            <button onClick={openModal} className={estilos.avaliacaoButton}>Fazer Avaliação</button>
+            <button onClick={openReviewModal} className={estilos.avaliacaoButton}>Fazer Avaliação</button>
             <button className={estilos.contatoButton}>Contato</button>
           </div>
         </div>
-        <Modal isOpen={isModalOpen} closeModal={closeModal} />
+        <Modal isOpen={isReviewModalOpen} closeModal={closeReviewModal} type="review" />
+        <Modal isOpen={isBioModalOpen} closeModal={closeBioModal} type="bio" bio={professor.bio} />
       </main>
       <Footer />
     </>

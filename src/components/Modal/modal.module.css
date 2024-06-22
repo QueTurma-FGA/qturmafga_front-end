@@ -12,12 +12,17 @@
 }
 
 .modal-content {
+  border-radius: 5px;
   background-color: #fefefe;
   margin: 15% auto;
-  padding: 20px;
+  padding: 40px;
   border: 1px solid #888;
   width: 80%;
   max-width: 600px;
+}
+
+.modal-titulo{
+  margin-bottom: 15px;
 }
 
 .closeBtn {
@@ -36,4 +41,28 @@
 
 .rating-criteria {
   margin-bottom: 20px;
+}
+
+.bio-titulo{
+  margin-bottom: 20px;
+}
+
+.bio-texto{
+  width: 500px;
+}
+
+.send-button{
+  padding: 8px;
+  background-color: #0a4273c5 ;
+  color: white;
+  border: 1px solid #0a4273c5;
+}
+
+.send-button:hover{
+  padding: 8px;
+  background-color: white ;
+  color: #0a4273c5;
+  cursor: pointer;
+  border: 1px solid #0a4273c5;
+  transition: 200ms;
 }

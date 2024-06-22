@@ -5,6 +5,7 @@ import styles from './professors.module.css';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import { getProfessorsByDisciplineCode } from '../../services/professors';
+import { CiMail } from "react-icons/ci";
 
 const Professors = () => {
   const { discipline } = useParams();
@@ -40,7 +41,7 @@ const Professors = () => {
           <div className={styles['resultados-exibidos']}>
             <p>Exibindo resultados para {discipline}</p>
           </div>
-          <section id="resultados">
+          <section id="resultados" className={styles['caixa-principal']}>
             {professors.map((professor) => (
               <article key={professor.email} className={styles['boxresultado']}>
                 <div className={styles['boxcabecalho']}>
@@ -54,7 +55,6 @@ const Professors = () => {
                   <div className={styles['avaliacao-box']}>
                     <h1>AVALIAÇÃO MÉDIA</h1>
                     <div className={styles['stars']}>
-                      {/* Aqui você pode adicionar a lógica para exibir as estrelas */}
                       <span className="fa fa-star checked"></span>
                       <span className="fa fa-star checked"></span>
                       <span className="fa fa-star checked"></span>
@@ -73,9 +73,10 @@ const Professors = () => {
                       </ul>
                     </div>
                   </div>
-                  <div className={styles['bio-box']}>
-                    <h1>CONTATO</h1>
-                    <a href={`mailto:${professor.email}`} className={styles['contato']}>{professor.email}</a>
+                  <div className={styles['bio-box']}>              
+                    <div className={styles['contato']}> 
+                      <a href={`mailto:${professor.email}`} className={styles['contato']}><CiMail />{professor.email}</a>
+                    </div>
                   </div>
                 </div>
                 <div className={styles['boxrodape']}>
@@ -86,7 +87,6 @@ const Professors = () => {
           </section>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }
