@@ -1,15 +1,57 @@
-.logoEmpresa{
+/* MOBILE*/
+.homeLink {
+  display: none;
+}
+
+.logoQTURMA img {
+  width: 250px;
+}
+
+header {
+  height: 90px;
+  background-color: whitesmoke;
+  max-width: 992px;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* TABLET  */
+@media only screen and (min-width: 600px) {
+  .logoQTURMA img{
+    width: 280px;
+  }
+}
+
+/* COMPUTADOR */
+@media only screen and (min-width: 992px) {
+  .logoQTURMA {
     padding: 8px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
   
-.logoEmpresa img{
+  .logoQTURMA img {
     width: 300px;
   }
-  header{
-    display: flex;
+
+  header {
     height: 90px;
-    justify-content: center;
     padding: 20px;
-    background-color: whitesmoke ;
-    padding-left: 50px;
+    background-color: whitesmoke;
+    margin: 0;
+    max-width: 2440px;
   }
+
+  .homeLink {
+    display: block;
+    font-size: 24px;
+    color: #0A4273;
+    position: absolute;
+    left: 20px;
+  }
+}

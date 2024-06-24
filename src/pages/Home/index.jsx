@@ -29,7 +29,7 @@ const Home = () => {
 
   const handleRowClick = (row) => {
     navigate(`/professors/${row.codigo}`); // Aqui ajustamos para incluir o código da disciplina no caminho
-  };
+  }; 
   
   const tableDataSettings = (field, data, record) => {
     return `${record.codigo} - ${record.nome}`

@@ -44,7 +44,6 @@ const DetailsProfessors = () => {
   return (
     <>
       <Header />
-      <div className={estilos.hr}></div>
       <main className={estilos.main}>
         <div id="resultado" className={estilos.resultado}>
           <div id="box" className={estilos.box}>
@@ -102,7 +101,6 @@ const DetailsProfessors = () => {
           
           <div id="footer-box" className={estilos.footerBox}>
             <button onClick={openReviewModal} className={estilos.avaliacaoButton}>Fazer Avaliação</button>
-            <button className={estilos.contatoButton}>Contato</button>
           </div>
         </div>
         <Modal isOpen={isReviewModalOpen} closeModal={closeReviewModal} type="review" />

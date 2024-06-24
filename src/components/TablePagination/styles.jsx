@@ -55,7 +55,8 @@ export const Table = styled.table`
     ${(props) => props.rowClick && css`
       &:hover {
         cursor: pointer;
-        color: var(--azul-escuro);
+        color: white;
+        background-color: var(--azul-escuro);
         opacity: 0.8;
         transition: 0.15s;
         font-weight: 600;

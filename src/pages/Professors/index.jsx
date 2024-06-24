@@ -37,22 +37,22 @@ const Professors = () => {
     <div>
       <Header />
       <main>
-        <div id="principal">
-          <div className={styles['resultados-exibidos']}>
+        <div className={styles['principal']}>
+          <div className={styles['dinamic-hr']}>
             <p>Exibindo resultados para {discipline}</p>
           </div>
-          <section id="resultados" className={styles['caixa-principal']}>
+          <section id="resultados" className={styles['body']}>
             {professors.map((professor) => (
-              <article key={professor.email} className={styles['boxresultado']}>
-                <div className={styles['boxcabecalho']}>
+              <article key={professor.email} className={styles['result-box']}>
+                <div className={styles['header-result-box']}>
                   <h1>{professor.nome}</h1>
                   <h2>{professor.unidade}</h2>
                 </div>
-                <div className={styles['boxcorpo']}>
-                  <div className={styles['profilepic-box']}>
-                    <img src={professor.fto} alt={`${professor.nome}`} width="100" />
+                <div className={styles['box-body']}>
+                  <div >
+                    <img className={styles['profilepic-box']} src={professor.fto} alt={`${professor.nome}`} width="100" />
                   </div>
-                  <div className={styles['avaliacao-box']}>
+                  <div className={styles['rating-box']}>
                     <h1>AVALIAÇÃO MÉDIA</h1>
                     <div className={styles['stars']}>
                       <span className="fa fa-star checked"></span>
@@ -64,7 +64,7 @@ const Professors = () => {
                   </div>
                   <div className={styles['highlights-box']}>
                     <h1>DESTAQUES</h1>
-                    <div className={styles['lista-destaques']}>
+                    <div className={styles['highlights-list']}>
                       <ul>
                         <li>Atencioso</li>
                         <li>Didático</li>
@@ -74,13 +74,14 @@ const Professors = () => {
                     </div>
                   </div>
                   <div className={styles['bio-box']}>              
-                    <div className={styles['contato']}> 
-                      <a href={`mailto:${professor.email}`} className={styles['contato']}><CiMail />{professor.email}</a>
+                    <div className={styles['contact-box']}> 
+                      <a href={`mailto:${professor.email}`} className={styles['contact-desktop']}><CiMail />{professor.email}</a>
+                      <a href={`mailto:${professor.email}`} className={styles['contact-mobile']}><CiMail /></a>
                     </div>
                   </div>
                 </div>
-                <div className={styles['boxrodape']}>
-                  <Link to={`/details/${professor.email}`} className={styles['ver-perfil']}>Ver Perfil</Link>
+                <div className={styles['box-footer']}>
+                  <Link to={`/details/${professor.email}`} className={styles['see-profile-button']}>Ver Perfil</Link>
                 </div>
               </article>
             ))}
