@@ -1,4 +1,4 @@
-import styled, { css }from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const DivTable = styled.div`
   font-weight: normal;
@@ -10,7 +10,6 @@ export const DivTable = styled.div`
     font-weight: normal;
     /* margin: 0; */
   }
-
 `;
 
 export const Table = styled.table`
@@ -19,7 +18,7 @@ export const Table = styled.table`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-spacing:0;
+  border-spacing: 0;
   border-collapse: collapse;
 
   ${(props) => props.borderRadius && css`
@@ -31,7 +30,6 @@ export const Table = styled.table`
     }
   `}
 
-  
   td, th {
     ${(props) => props.grid && css`
       border: 1px solid #dddddd;
@@ -40,16 +38,12 @@ export const Table = styled.table`
     text-align: left;
     padding: ${props => props.actions ? '2px 6px' : '10px 6px'};
   }
-  
+
   th {
     border-top: 0;
     background-color: #fff;
     padding: 8px;
   }
-
-  /* tr:nth-child(2n+1) {
-    background-color: #F8F9FA;
-  } */
 
   tr {
     ${(props) => props.rowClick && css`
@@ -69,5 +63,33 @@ export const Table = styled.table`
     font-weight: 400;
     border: thin solid var(--azul-escuro);
   }
-  
+
+  /* Media Queries */
+  @media (max-width: 768px) {
+    td, th {
+      padding: ${props => props.actions ? '1px 4px' : '8px 4px'};
+      line-height: 1.5; 
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 500px;
+    }
+
+    tr {
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    td, th {
+      padding: ${props => props.actions ? '0.5px 2px' : '5px 2px'};
+      line-height: 1.75;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 350px;
+    }
+
+    tr {
+      font-size: 12px;
+    }
+  }
 `;

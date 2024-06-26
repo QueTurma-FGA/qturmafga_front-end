@@ -337,7 +337,7 @@
     font-size: 0.95em;
     text-align: center;
     padding: 9px;
-    margin: auto;
+    margin-top: -10px;
     border-radius: 0px;
     font-weight: 600;
     background-color: var(--azul-escuro);
@@ -410,26 +410,24 @@
   }
   
   .bio-box{
-    max-width: 330px;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    height: 180px;
-    padding-top: 50px;
+    margin: 0;
+    text-align: left;
+    padding: 0;
   }
-  .bio-box a{
-    font-size: 1.1em;
-    color: var(--azul-escuro);
-    text-decoration: underline;
+  .bio-box ul  {
+    margin-top: 20px;
+    margin-left: 17px;
+    font-size: 1em;
+    color: black;
   }
   
-  svg{
+  /* svg{
     stroke:currentColor;
     fill:currentColor;
     stroke-width:0;
     height:1.2em;
     width:2em;
-      }
+      } */
   
   .box-footer{
     padding: 20px 30px;
@@ -443,12 +441,12 @@
     color: black;
   }
     
-  .contact-mobile{
+  /* .contact-mobile{
     display: none;
   }
 
   .contact-box{
-    font-size: 1.2em;
+    font-size: 0.9em;
   }
   
   .contact-box a{
@@ -458,7 +456,7 @@
   .contact-desktop{
     display: inline-flex;
     font-size: 1.3em;
-  }
+  } */
   
   .see-profile-button{
     border: 1px solid black;

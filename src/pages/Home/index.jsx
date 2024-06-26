@@ -1,57 +1,65 @@
-import { useState, useEffect, useLayoutEffect } from 'react'
-import styles from './home.module.css'
-import TablePagination from '../../components/TablePagination'
-import { getAllDisciplines } from '../../services/disciplines'
-import { useNavigate } from "react-router-dom";
-import Header from '../../components/Header'
-import Footer from '../../components/Footer'
+import React, { useState, useEffect, useLayoutEffect } from 'react';
+import styles from './home.module.css';
+import TablePagination from '../../components/TablePagination';
+import { getAllDisciplines } from '../../services/disciplines';
+import { useNavigate } from 'react-router-dom';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 
+// Função para normalizar texto removendo acentos e tornando minúsculas
+const normalizeText = (text) => {
+  return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+};
 
 const tableFields = [
-  {key: 'codigo', label: 'codigo'},
-]
+  { key: 'codigo', label: 'Código' },
+];
 
 const Home = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const [materias, setMaterias] = useState([]); 
-  const [filterMaterias, setFilterMaterias] = useState([]); 
-  
+  const [materias, setMaterias] = useState([]);
+  const [filterMaterias, setFilterMaterias] = useState([]);
+
   const listAllDisciplines = async () => {
-    const dados = await getAllDisciplines()
-    setMaterias(dados.data)
-    setFilterMaterias(dados.data)
-  }
+    const dados = await getAllDisciplines();
+    setMaterias(dados.data);
+    setFilterMaterias(dados.data);
+  };
 
   useLayoutEffect(() => {
-    listAllDisciplines()
-  }, [])
+    listAllDisciplines();
+  }, []);
 
   const handleRowClick = (row) => {
-    navigate(`/professors/${row.codigo}`); // Aqui ajustamos para incluir o código da disciplina no caminho
-  }; 
-  
-  const tableDataSettings = (field, data, record) => {
-    return `${record.codigo} - ${record.nome}`
-  }
-  
-  const handleChangeMateria = (e) => {
-    let str = e.target.value.toUpperCase()
+    navigate(`/professors/${row.codigo}`);
+  };
 
-    let filterMaterias = materias.filter(data => data.codigo.includes(str) || data.nome.includes(str))
-    setFilterMaterias(filterMaterias)
-  }
-  
-  return ( 
-    <body>
-      <Header/>
+  const tableDataSettings = (field, data, record) => {
+    return `${record.codigo} - ${record.nome}`;
+  };
+
+  const handleChangeMateria = (e) => {
+    let str = normalizeText(e.target.value);
+
+    let filterMaterias = materias.filter(
+      data =>
+        normalizeText(data.codigo).includes(str) ||
+        normalizeText(data.nome).includes(str)
+    );
+    setFilterMaterias(filterMaterias);
+  };
+
+  return (
+    <>
+      <Header />
       <main>
         <div className={styles.principal}>
           <div className={styles.search}>
-            <input 
-              type="text" 
-              name="input-box" 
-              className={styles.ibox} 
+            <input
+              type="text"
+              name="input-box"
+              className={styles.ibox}
               placeholder="Pesquise uma matéria por código ou nome"
               onChange={handleChangeMateria}
             />
@@ -65,14 +73,10 @@ const Home = () => {
           rowsPerPageOptions={['6', '10', '25', '50', '100']}
           onRowClick={handleRowClick}
         />
-
-
-        
       </main>
-        
-      <Footer />   
-    </body>
+      <Footer />
+    </>
   );
-}
+};
 
-export default Home
+export default Home;

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+import { IoMdMail } from "react-icons/io";
 import StarRating from '../../components/StarRating';
 import Modal from '../../components/Modal';
 import estilos from './details.module.css';
@@ -47,7 +48,6 @@ const DetailsProfessors = () => {
       <main className={estilos.main}>
         <div id="resultado" className={estilos.resultado}>
           <div id="box" className={estilos.box}>
-
             <div id="first-column" className={estilos.firstColumn}>
               <div id="profilepic-box" className={estilos.profilepicBox}>
                 <img src={professor.fto} alt={`${professor.nome}`} width="100" />
@@ -86,16 +86,10 @@ const DetailsProfessors = () => {
             </div>
 
             <div id="third-column" className={estilos.thirdColumn}>
-              <h2 className={estilos.discplinas_ministradas_titulo}>Disciplinas Ministradas:</h2>
-              <ul>
-                {professor.materias && professor.materias.length > 0 ? (
-                  professor.materias.map((materia, index) => (
-                    <li key={index}>{materia.materia.nome}</li>
-                  ))
-                ) : (
-                  <li>Sem disciplinas cadastradas</li>
-                )}
-              </ul>
+              <div className={estilos.contactBox}>
+                <a href={`mailto:${professor.email}`}><IoMdMail /> </a>
+                <a href={`mailto:${professor.email}`}>{professor.email}</a>
+              </div>
             </div>
           </div>
           
@@ -103,7 +97,7 @@ const DetailsProfessors = () => {
             <button onClick={openReviewModal} className={estilos.avaliacaoButton}>Fazer Avaliação</button>
           </div>
         </div>
-        <Modal isOpen={isReviewModalOpen} closeModal={closeReviewModal} type="review" />
+        <Modal isOpen={isReviewModalOpen} closeModal={closeReviewModal} type="review" professorEmail={email} />
         <Modal isOpen={isBioModalOpen} closeModal={closeBioModal} type="bio" bio={professor.bio} />
       </main>
       <Footer />

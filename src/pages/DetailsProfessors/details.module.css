@@ -58,8 +58,8 @@ main {
 }
 
 .secondColumn {
-    margin-left: -90px;
-    width: 400px;
+    margin-left: -30px;
+    width: 500px;
 }
 
 .secondColumn h2 {
@@ -70,6 +70,21 @@ main {
 .secondColumn p {
     font-size: 0.9em;
 }
+
+.thirdColumn {
+    padding-top: 150px;
+}
+
+.contactBox{
+    font-size: 1.3em;
+    display: inline-flex;
+  }
+  
+  .contactBox a{
+    font-weight: bold;
+    color: #0A4273;
+    text-decoration: none;
+  }
 
 .readMoreButton{
     color: #0A4273;

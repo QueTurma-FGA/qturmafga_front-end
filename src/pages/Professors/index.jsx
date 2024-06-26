@@ -4,8 +4,14 @@ import logoQturmaFGA from '../../assets/logoQTurmaFGA.png';
 import styles from './professors.module.css';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import { getProfessorsByDisciplineCode } from '../../services/professors';
+import { getProfessorsByDisciplineCode, getProfessorByEmail } from '../../services/professors';
 import { CiMail } from "react-icons/ci";
+
+// Função para capitalizar a primeira letra de cada palavra
+const capitalizeFirstLetter = (str) => {
+  if (!str) return str;
+  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+};
 
 const Professors = () => {
   const { discipline } = useParams();
@@ -17,7 +23,13 @@ const Professors = () => {
     const fetchProfessors = async () => {
       try {
         const response = await getProfessorsByDisciplineCode(discipline);
-        setProfessors(response.data);
+        const professorsWithDetails = await Promise.all(
+          response.data.map(async (professor) => {
+            const professorDetails = await getProfessorByEmail(professor.email);
+            return { ...professor, materias: professorDetails.data.materias };
+          })
+        );
+        setProfessors(professorsWithDetails);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -49,7 +61,7 @@ const Professors = () => {
                   <h2>{professor.unidade}</h2>
                 </div>
                 <div className={styles['box-body']}>
-                  <div >
+                  <div>
                     <img className={styles['profilepic-box']} src={professor.fto} alt={`${professor.nome}`} width="100" />
                   </div>
                   <div className={styles['rating-box']}>
@@ -66,18 +78,25 @@ const Professors = () => {
                     <h1>DESTAQUES</h1>
                     <div className={styles['highlights-list']}>
                       <ul>
-                        <li>Atencioso</li>
-                        <li>Didático</li>
-                        <li>Organizado</li>
-                        <li>Inspirador</li>
+                        <li>Metodologia</li>
+                        <li>Didática</li>
+                        <li>Materiais</li>
+                        <li>Disponibilidade</li>
+                        <li>Coerência</li>
                       </ul>
                     </div>
                   </div>
-                  <div className={styles['bio-box']}>              
-                    <div className={styles['contact-box']}> 
-                      <a href={`mailto:${professor.email}`} className={styles['contact-desktop']}><CiMail />{professor.email}</a>
-                      <a href={`mailto:${professor.email}`} className={styles['contact-mobile']}><CiMail /></a>
-                    </div>
+                  <div className={styles['bio-box']}>
+                      <h1>DISCIPLINAS MINISTRADAS</h1>
+                      <ul>
+                        {professor.materias && professor.materias.length > 0 ? (
+                          professor.materias.map((materia, index) => (
+                            <li key={index}>{capitalizeFirstLetter(materia.materia.nome)}</li>
+                          ))
+                        ) : (
+                          <li>Sem disciplinas cadastradas</li>
+                        )}
+                      </ul>
                   </div>
                 </div>
                 <div className={styles['box-footer']}>
@@ -90,6 +109,6 @@ const Professors = () => {
       </main>
     </div>
   );
-}
+};
 
 export default Professors;

@@ -1,24 +1,62 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import estilos from './modal.module.css';
 import StarRating from '../StarRating';
+import { addAvaliacao } from '../../services/rating';
+import { getProfessorByEmail } from '../../services/professors';
 
-const Modal = ({ isOpen, closeModal, type, bio }) => {
+const Modal = ({ isOpen, closeModal, type, bio, professorEmail }) => {
     const [ratings, setRatings] = useState({
         disponibilidade: 0,
-        materiais: 0,
+        materiaisDeApoio: 0,
         didatica: 0,
-        coerencia: 0,
+        coerenciaDeAvaliacao: 0,
         metodologia: 0,
     });
+    const [error, setError] = useState(null);
+    const [professor, setProfessor] = useState(null);
+
+    useEffect(() => {
+        const fetchProfessor = async () => {
+            try {
+                const response = await getProfessorByEmail(professorEmail);
+                setProfessor(response.data);
+            } catch (error) {
+                console.error('Erro ao buscar professor:', error);
+                setError('Erro ao buscar dados do professor.');
+            }
+        };
+
+        if (professorEmail) {
+            fetchProfessor();
+        }
+    }, [professorEmail]);
 
     const handleRatingChange = (criteria, rating) => {
         setRatings({ ...ratings, [criteria]: rating });
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        alert('Avaliação enviada: ' + JSON.stringify(ratings));
-        closeModal();
+        if (!professor) {
+            setError('Professor não encontrado.');
+            return;
+        }
+
+        const { materiaId, id: professorId } = professor;
+
+        try {
+            await addAvaliacao({
+                materiaId,
+                professorId,
+                ...ratings,
+            });
+            alert('Avaliação enviada com sucesso!');
+            setError(null);
+            closeModal();
+        } catch (error) {
+            console.error('Erro ao enviar avaliação:', error);
+            setError('Erro ao enviar avaliação. Por favor, tente novamente.');
+        }
     };
 
     const handleClickOutside = (event) => {
@@ -45,10 +83,10 @@ const Modal = ({ isOpen, closeModal, type, bio }) => {
                                 />
                             </div>
                             <div className={estilos['rating-criteria']}>
-                                <label htmlFor="materiais">Materiais de apoio:</label>
+                                <label htmlFor="materiaisDeApoio">Materiais de apoio:</label>
                                 <StarRating
-                                    stars={ratings.materiais}
-                                    onStarClick={(rating) => handleRatingChange('materiais', rating)}
+                                    stars={ratings.materiaisDeApoio}
+                                    onStarClick={(rating) => handleRatingChange('materiaisDeApoio', rating)}
                                 />
                             </div>
                             <div className={estilos['rating-criteria']}>
@@ -59,10 +97,10 @@ const Modal = ({ isOpen, closeModal, type, bio }) => {
                                 />
                             </div>
                             <div className={estilos['rating-criteria']}>
-                                <label htmlFor="coerencia">Coerência de avaliações:</label>
+                                <label htmlFor="coerenciaDeAvaliacao">Coerência de avaliações:</label>
                                 <StarRating
-                                    stars={ratings.coerencia}
-                                    onStarClick={(rating) => handleRatingChange('coerencia', rating)}
+                                    stars={ratings.coerenciaDeAvaliacao}
+                                    onStarClick={(rating) => handleRatingChange('coerenciaDeAvaliacao', rating)}
                                 />
                             </div>
                             <div className={estilos['rating-criteria']}>
@@ -74,6 +112,7 @@ const Modal = ({ isOpen, closeModal, type, bio }) => {
                             </div>
                             <button className={estilos['send-button']} type="submit">Enviar Avaliação</button>
                         </form>
+                        {error && <p className={estilos.error}>{error}</p>}
                     </>
                 )}
                 {type === 'bio' && (
