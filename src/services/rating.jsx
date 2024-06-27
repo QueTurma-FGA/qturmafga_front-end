@@ -1,7 +1,10 @@
-export const addAvaliacao = async ({ materiaId, professorId, didatica, metodologia, coerenciaDeAvaliacao, disponibilidade, materiaisDeApoio }) => {
+import axios from 'axios';
+
+const baseUrl = "http://localhost:3333";
+
+const addAvaliacao = async ({ professorId, didatica, metodologia, coerenciaDeAvaliacao, disponibilidade, materiaisDeApoio }) => {
   try {
-    const response = await api.post('/add-avaliacao', {
-      materiaId,
+    const response = await axios.post(`${baseUrl}/create-avaliacao`, {
       professorId,
       didatica,
       metodologia,
@@ -15,8 +18,15 @@ export const addAvaliacao = async ({ materiaId, professorId, didatica, metodolog
     throw error;
   }
 };
-  
-  export const getAverageAvaliacoes = async (professorId) => {
-    const response = await api.get(`/average-avaliacoes/${professorId}`);
+
+const getMediaAvaliacoes = async () => {
+  try {
+    const response = await api.get('/media-avaliacoes');
     return response.data;
-  };
+  } catch (error) {
+    console.error('Erro ao obter média das avaliações:', error.response ? error.response.data : error.message);
+    throw error;
+  }
+};
+
+export {addAvaliacao, getMediaAvaliacoes}

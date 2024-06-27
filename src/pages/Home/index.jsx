@@ -55,12 +55,30 @@ const Home = () => {
       <Header />
       <main>
         <div className={styles.principal}>
-          <div className={styles.search}>
+          <div className={styles.searchDesktop}>
             <input
               type="text"
               name="input-box"
               className={styles.ibox}
               placeholder="Pesquise uma matéria por código ou nome"
+              onChange={handleChangeMateria}
+            />
+          </div>
+          <div className={styles.searchTablet}>
+            <input
+              type="text"
+              name="input-box"
+              className={styles.ibox}
+              placeholder="Pesquise uma matéria por código ou nome"
+              onChange={handleChangeMateria}
+            />
+          </div>
+          <div className={styles.searchMobile}>
+            <input
+              type="text"
+              name="input-box"
+              className={styles.ibox}
+              placeholder="Pesquise uma matéria"
               onChange={handleChangeMateria}
             />
           </div>

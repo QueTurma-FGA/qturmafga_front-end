@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import logoQturmaFGA from '../../assets/logoQTurmaFGA.png';
 import styles from './professors.module.css';
 import Header from '../../components/Header';
-import Footer from '../../components/Footer';
 import { getProfessorsByDisciplineCode, getProfessorByEmail } from '../../services/professors';
-import { CiMail } from "react-icons/ci";
+import { getMediaAvaliacoes } from '../../services/rating';
+
 
 // Função para capitalizar a primeira letra de cada palavra
 const capitalizeFirstLetter = (str) => {
@@ -18,6 +17,7 @@ const Professors = () => {
   const [professors, setProfessors] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [mediaAvaliacoes, setMediaAvaliacoes] = useState({}); // Novo estado para guardar as médias
 
   useEffect(() => {
     const fetchProfessors = async () => {
@@ -42,11 +42,24 @@ const Professors = () => {
     }
   }, [discipline]);
 
+  useEffect(() => {
+    const fetchMediaAvaliacoes = async () => {
+      try {
+        const response = await getMediaAvaliacoes();
+        setMediaAvaliacoes(response);
+      } catch (error) {
+        console.error('Erro ao obter média das avaliações:', error.response ? error.response.data : error.message);
+      }
+    };
+
+    fetchMediaAvaliacoes();
+  }, []);
+
   if (loading) return <p>Carregando...</p>;
   if (error) return <p>Erro: {error}</p>;
 
   return (
-    <div>
+    <>
       <Header />
       <main>
         <div className={styles['principal']}>
@@ -67,12 +80,11 @@ const Professors = () => {
                   <div className={styles['rating-box']}>
                     <h1>AVALIAÇÃO MÉDIA</h1>
                     <div className={styles['stars']}>
-                      <span className="fa fa-star checked"></span>
-                      <span className="fa fa-star checked"></span>
-                      <span className="fa fa-star checked"></span>
-                      <span className="fa fa-star"></span>
-                      <span className="fa fa-star"></span>
+                      {Array.from({ length: 5 }, (_, index) => (
+                        <span key={index} className={`fa fa-star ${index < mediaAvaliacoes.media ? 'checked' : ''}`}></span>
+                      ))}
                     </div>
+                    <p>{mediaAvaliacoes.professorEmail === professor.email ? mediaAvaliacoes.media : 'N/A'}</p>
                   </div>
                   <div className={styles['highlights-box']}>
                     <h1>DESTAQUES</h1>
@@ -87,16 +99,16 @@ const Professors = () => {
                     </div>
                   </div>
                   <div className={styles['bio-box']}>
-                      <h1>DISCIPLINAS MINISTRADAS</h1>
-                      <ul>
-                        {professor.materias && professor.materias.length > 0 ? (
-                          professor.materias.map((materia, index) => (
-                            <li key={index}>{capitalizeFirstLetter(materia.materia.nome)}</li>
-                          ))
-                        ) : (
-                          <li>Sem disciplinas cadastradas</li>
-                        )}
-                      </ul>
+                    <h1>DISCIPLINAS MINISTRADAS</h1>
+                    <ul>
+                      {professor.materias && professor.materias.length > 0 ? (
+                        professor.materias.map((materia, index) => (
+                          <li key={index}>{capitalizeFirstLetter(materia.materia.nome)}</li>
+                        ))
+                      ) : (
+                        <li>Sem disciplinas cadastradas</li>
+                      )}
+                    </ul>
                   </div>
                 </div>
                 <div className={styles['box-footer']}>
@@ -107,7 +119,7 @@ const Professors = () => {
           </section>
         </div>
       </main>
-    </div>
+    </>
   );
 };
 

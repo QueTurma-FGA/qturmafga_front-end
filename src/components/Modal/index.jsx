@@ -42,11 +42,10 @@ const Modal = ({ isOpen, closeModal, type, bio, professorEmail }) => {
             return;
         }
 
-        const { materiaId, id: professorId } = professor;
+        const { email: professorId } = professor;
 
         try {
             await addAvaliacao({
-                materiaId,
                 professorId,
                 ...ratings,
             });

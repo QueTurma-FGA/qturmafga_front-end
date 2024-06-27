@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 export const DivTable = styled.div`
   font-weight: normal;
   background-color: #fff;
-  font-family: arial, sans-serif;
+  font-family: Calibri, sans-serif;
   padding-bottom: 2px;
   text-align: center;
   span {
