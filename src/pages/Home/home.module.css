@@ -7,7 +7,7 @@
     justify-content: center;
     height: 250px;
     font-family: 'Cambria';
-    background-image: url('../../assets/banner-home.png');
+    background-image: url('../../assets/bannerHome.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top left;
@@ -58,7 +58,7 @@
     justify-content: center;
     height: 250px;
     font-family: 'Cambria';
-    background-image: url('../../assets/banner-home.png');
+    background-image: url('../../assets/bannerHome.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top left;
@@ -68,7 +68,7 @@
   .texto-central {
     font-size: 1.8em;
     margin: 15px;
-    visibility: visible; /* Corrigir visibilidade */
+    visibility: visible;
   }
 
   .ibox {
@@ -109,7 +109,7 @@
     justify-content: center;
     height: 250px;
     font-family: 'Cambria';
-    background-image: url('../../assets/banner-home.png');
+    background-image: url('../../assets/bannerHome.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top left;
@@ -119,7 +119,7 @@
   .texto-central {
     font-size: 1.8em;
     margin: 15px;
-    visibility: visible; /* Corrigir visibilidade */
+    visibility: visible; 
   }
 
   .ibox {
