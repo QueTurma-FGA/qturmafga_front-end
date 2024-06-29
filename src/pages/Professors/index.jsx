@@ -29,7 +29,7 @@ const Professors = () => {
             return { 
               ...professor, 
               materias: professorDetails.data.materias,
-              mediaAvaliacoes: mediaAvaliacoes.media
+              mediaGeral: mediaAvaliacoes.mediaGeral // Corrigido para acessar o campo correto
             };
           })
         );
@@ -71,9 +71,9 @@ const Professors = () => {
                   <div className={styles['rating-box']}>
                     <h1>AVALIAÇÃO MÉDIA</h1>
                     <div className={styles['stars-box']}>
-                      <StarRating stars={Math.round(professor.mediaAvaliacoes)} />
-                      <p>{professor.mediaAvaliacoes || 'N/A'}</p>
-                      </div>
+                      <StarRating stars={Math.round(professor.mediaGeral)} />
+                      <p>{professor.mediaGeral !== undefined ? professor.mediaGeral : 'N/A'}</p>
+                    </div>
                   </div>
                   <div className={styles['highlights-box']}>
                     <h1>DESTAQUES</h1>
