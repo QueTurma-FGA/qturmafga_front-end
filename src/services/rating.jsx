@@ -19,9 +19,9 @@ const addAvaliacao = async ({ professorId, didatica, metodologia, coerenciaDeAva
   }
 };
 
-const getMediaAvaliacoes = async () => {
+const getMediaAvaliacoes = async (email) => {
   try {
-    const response = await api.get('/media-avaliacoes');
+    const response = await axios.get(`${baseUrl}/media-avaliacao/${email}`);
     return response.data;
   } catch (error) {
     console.error('Erro ao obter média das avaliações:', error.response ? error.response.data : error.message);

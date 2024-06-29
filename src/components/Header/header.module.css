@@ -28,7 +28,7 @@ main {
 }
 
 /* TABLET  */
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 600px) and (max-width: 991px) {
   .logoQTURMA img {
     width: 280px;
   }
@@ -50,6 +50,7 @@ main {
   header {
     height: 90px;
     padding: 20px;
+    padding-top: 35px;
     background-color: whitesmoke;
     margin: 0;
     max-width: 2440px;
@@ -58,8 +59,9 @@ main {
   }
 
   .homeLink {
+    margin-left: 30px;
     display: block;
-    font-size: 24px;
+    font-size: 36px;
     color: #0A4273;
     position: absolute;
     left: 20px;

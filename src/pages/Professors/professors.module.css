@@ -13,7 +13,7 @@
     --azul-escuro: #0A4273;
   }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) and (min-width: 200px) {
   .dinamic-hr{
     border: 1px solid rgba(7, 7, 86, 0.686);
     font-size: 0.95em;
@@ -151,7 +151,7 @@
   }
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 600px) and (max-width: 991px){
   .dinamic-hr{
     border: 1px solid rgba(7, 7, 86, 0.686);
     font-size: 0.95em;
@@ -380,10 +380,18 @@
     width: 187px;
   }
   
-  .stars{
+  .stars-box{
     margin-top: 20px;
+    padding: 0px 50px;
     color: gold;
     font-size: 1.3em;
+  }
+
+  .stars-box p{
+    color: black;
+    margin-top: 5px;
+    font-size: 0.8em;
+    margin-left: 8px;
   }
   
   .highlights-box{
@@ -411,14 +419,6 @@
     color: black;
   }
   
-  /* svg{
-    stroke:currentColor;
-    fill:currentColor;
-    stroke-width:0;
-    height:1.2em;
-    width:2em;
-      } */
-  
   .box-footer{
     padding: 20px 30px;
     border-top: 1px solid rgba(0, 0, 0, 0.200);
@@ -430,23 +430,6 @@
     text-decoration: none;
     color: black;
   }
-    
-  /* .contact-mobile{
-    display: none;
-  }
-
-  .contact-box{
-    font-size: 0.9em;
-  }
-  
-  .contact-box a{
-    font-weight: bold;
-  }
-
-  .contact-desktop{
-    display: inline-flex;
-    font-size: 1.3em;
-  } */
   
   .see-profile-button{
     border: 1px solid black;

@@ -4,7 +4,7 @@ import styles from './professors.module.css';
 import Header from '../../components/Header';
 import { getProfessorsByDisciplineCode, getProfessorByEmail } from '../../services/professors';
 import { getMediaAvaliacoes } from '../../services/rating';
-
+import StarRating from '../../components/StarRating'; // Ajuste o caminho conforme necessário
 
 // Função para capitalizar a primeira letra de cada palavra
 const capitalizeFirstLetter = (str) => {
@@ -17,7 +17,6 @@ const Professors = () => {
   const [professors, setProfessors] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [mediaAvaliacoes, setMediaAvaliacoes] = useState({}); // Novo estado para guardar as médias
 
   useEffect(() => {
     const fetchProfessors = async () => {
@@ -26,7 +25,12 @@ const Professors = () => {
         const professorsWithDetails = await Promise.all(
           response.data.map(async (professor) => {
             const professorDetails = await getProfessorByEmail(professor.email);
-            return { ...professor, materias: professorDetails.data.materias };
+            const mediaAvaliacoes = await getMediaAvaliacoes(professor.email);
+            return { 
+              ...professor, 
+              materias: professorDetails.data.materias,
+              mediaAvaliacoes: mediaAvaliacoes.media
+            };
           })
         );
         setProfessors(professorsWithDetails);
@@ -41,19 +45,6 @@ const Professors = () => {
       fetchProfessors();
     }
   }, [discipline]);
-
-  useEffect(() => {
-    const fetchMediaAvaliacoes = async () => {
-      try {
-        const response = await getMediaAvaliacoes();
-        setMediaAvaliacoes(response);
-      } catch (error) {
-        console.error('Erro ao obter média das avaliações:', error.response ? error.response.data : error.message);
-      }
-    };
-
-    fetchMediaAvaliacoes();
-  }, []);
 
   if (loading) return <p>Carregando...</p>;
   if (error) return <p>Erro: {error}</p>;
@@ -79,12 +70,10 @@ const Professors = () => {
                   </div>
                   <div className={styles['rating-box']}>
                     <h1>AVALIAÇÃO MÉDIA</h1>
-                    <div className={styles['stars']}>
-                      {Array.from({ length: 5 }, (_, index) => (
-                        <span key={index} className={`fa fa-star ${index < mediaAvaliacoes.media ? 'checked' : ''}`}></span>
-                      ))}
-                    </div>
-                    <p>{mediaAvaliacoes.professorEmail === professor.email ? mediaAvaliacoes.media : 'N/A'}</p>
+                    <div className={styles['stars-box']}>
+                      <StarRating stars={Math.round(professor.mediaAvaliacoes)} />
+                      <p>{professor.mediaAvaliacoes || 'N/A'}</p>
+                      </div>
                   </div>
                   <div className={styles['highlights-box']}>
                     <h1>DESTAQUES</h1>
