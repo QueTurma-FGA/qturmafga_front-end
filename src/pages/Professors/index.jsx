@@ -4,7 +4,7 @@ import styles from './professors.module.css';
 import Header from '../../components/Header';
 import { getProfessorsByDisciplineCode, getProfessorByEmail } from '../../services/professors';
 import { getMediaAvaliacoes } from '../../services/rating';
-import StarRating from '../../components/StarRating'; // Ajuste o caminho conforme necessário
+import StarRating from '../../components/StarRating';
 
 // Função para capitalizar a primeira letra de cada palavra
 const capitalizeFirstLetter = (str) => {
@@ -29,7 +29,7 @@ const Professors = () => {
             return { 
               ...professor, 
               materias: professorDetails.data.materias,
-              mediaGeral: mediaAvaliacoes.mediaGeral // Corrigido para acessar o campo correto
+              mediaGeral: mediaAvaliacoes.mediaGeral
             };
           })
         );
@@ -72,7 +72,6 @@ const Professors = () => {
                     <h1>AVALIAÇÃO MÉDIA</h1>
                     <div className={styles['stars-box']}>
                       <StarRating stars={Math.round(professor.mediaGeral)} />
-                      <p>{professor.mediaGeral !== undefined ? professor.mediaGeral : 'N/A'}</p>
                     </div>
                   </div>
                   <div className={styles['highlights-box']}>

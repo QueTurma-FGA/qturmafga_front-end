@@ -29,4 +29,13 @@ const getMediaAvaliacoes = async (email) => {
   }
 };
 
-export {addAvaliacao, getMediaAvaliacoes}
+const getMediaAvaliacaoPorCriterio = async (email, criterio) => {
+  try {
+    const response = await axios.get(`${baseUrl}/avaliacoes-professor/${email}/${criterio}`);
+    return response.data;
+  } catch (error) {
+    throw new Error('Erro ao buscar média de avaliação por critério');
+  }
+};
+
+export {addAvaliacao, getMediaAvaliacoes, getMediaAvaliacaoPorCriterio}
