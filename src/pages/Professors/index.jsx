@@ -6,7 +6,6 @@ import { getProfessorsByDisciplineCode, getProfessorByEmail } from '../../servic
 import { getMediaAvaliacoes } from '../../services/rating';
 import StarRating from '../../components/StarRating';
 
-// Função para capitalizar a primeira letra de cada palavra
 const capitalizeFirstLetter = (str) => {
   if (!str) return str;
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();

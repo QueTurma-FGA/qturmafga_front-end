@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
-// Função para normalizar texto removendo acentos e tornando minúsculas
 const normalizeText = (text) => {
   return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 };
