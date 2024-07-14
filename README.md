@@ -22,11 +22,16 @@ npm run dev
 
 ## Telas do projeto
 
-![Tela inicial]("../../src/assets/TELA1.png")
+### Tela inicial
+![Tela inicial](https://raw.githubusercontent.com/QueTurma-FGA/qturmafga_front-end/main/src/assets/TELA1.png)
 
-![Segunda Tela]("../../src/assets/TELA2.png")
+### Segunda tela
+![Segunda Tela](https://raw.githubusercontent.com/QueTurma-FGA/qturmafga_front-end/main/src/assets/TELA2.png)
 
-![Terceira Tela]("../../src/assets/TELA3.png")
+### Terceira tela
+![terceira Tela](https://raw.githubusercontent.com/QueTurma-FGA/qturmafga_front-end/main/src/assets/TELA3.png)
 
-![Tela de avaliação]("../../src/assets/TELA4.png")
+### Tela de avaliação
+![Tela de avaliação](https://raw.githubusercontent.com/QueTurma-FGA/qturmafga_front-end/main/src/assets/TELA4.png)
+
 
